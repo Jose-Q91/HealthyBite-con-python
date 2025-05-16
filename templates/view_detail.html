@@ -1,0 +1,56 @@
+<hr>
+{% if list_products|length > 0 %}
+<div class="w3-container">
+    <h5>MIS PEDIDOS</h5>
+    <table>
+        <tr>
+            <th>Plato</th>
+            <th>Descripcion</th>
+            <th>Ingredientes</th>
+            <th>Precio</th>
+            <th>Sacar Pedido</th>
+        </tr>
+        {% set total = 0.0|float %}
+        {% for product in list_products %}
+        <tr>
+            <td>{{product[1]}}</td>
+            <td>{{product[2]}}</td>
+            <td>{{product[3]}}</td>
+            <td>${{product[5]}}</td>
+            <td>
+                <div>
+                    <a href="{{ url_for('eliminar_detail', id_product = product[0]) }}" class="w3-button w3-red"
+                        type="button">Borrar</a>
+                </div>
+            </td>
+        </tr>
+        {% set price = product[5]|float %}
+        {% set total = total + price %}
+      
+        {% endfor %}
+        <tr>
+            <td colspan="3" class="w3-right-align"><strong>Total:</strong></td>
+            <td>${{total}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <div>
+        <a href="#" onclick="navegar('{{ url_for('finalize_buies') }}', 'finalizar')" class="w3-button w3-green" type="button">Comprar</a>
+    </div>
+</div>
+{% else %}
+<div class="d-flex flex-column align-items-center justify-content-center mt-5">
+    <h1 class="h5">Aun no tiene registrado orden</h1>
+    <p class="w3-large w3-text-blue w3-center w3-padding">¿Desea ir al menú?</p>
+    <a  href="{{ url_for('main') }}#menu" class="w3-button w3-green">Ir a Menu</a>
+</div>
+{% endif %}
+<script type="text/javascript">
+    window.onload = function() {
+        // Check if the page is being loaded for the first time or reloaded
+        if (performance.navigation.type === 1) {
+            // Redirect to another page
+            window.location.href = 'http://127.0.0.1:81/panel-usuario';
+        }
+    }
+  </script>

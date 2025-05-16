@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+  <title>HealthyBite</title>
+</head>
+<style>
+  .menu-link,
+  .w3-text-grey,
+  .h1,
+  h1,
+  .h5,
+  p,
+  #btn-enviar {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 10px;
+  }
+
+
+  .btn-form {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .btn-form:hover {
+    opacity: 1;
+  }
+</style>
+
+<body class="w3-dark-grey">
+  <header>
+    <nav class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a class="w3-bar-item w3-button" href="">HealthyBite</a>
+      <div class="w3-right w3-hide-small">
+        <a href="{{ url_for('main') }}"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Inicio</a>
+        <a href="#about"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Acerca de
+          Nosotros</a>
+        <a href="#menu"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Menu</a>
+        <a href="#contacto"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Contacto</a>
+        {% if 'id_user' in session and session['rol'] == "User" %}
+        <a href="{{ url_for('panel_usuario') }}"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Panel
+          Usuario</a>
+        {% elif 'id_user' in session and session['rol'] == "Admin" %}
+        <a href="{{ url_for('panel_admin') }}"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Panel</a>
+        {% else %}
+        <a href="{{ url_for('login_app') }}"
+          class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">Ingresar</a>
+        {% endif %}
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="w3-display-container">
+      <img class="w-100" src="../static/images/portal.jpg" alt="Lights">
+    </div>
+
+    <div class="w3-container w3-teal">
+      <h1>Bienvenidos a HealthyBite</h1>
+    </div>
+    <br>
+    <section class="container">
+      <!-- About Section -->
+      <div class="w3-row w3-padding-64" id="about">
+        <div class="w3-col m6 w3-padding-large w3-hide-small">
+          <img src="../static/images/plato.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600"
+            height="750">
+        </div>
+
+        <div class="w3-col m6 w3-padding-large w3-large">
+          <h1 class="w3-center fs-2">Acerca de Nosostros
+          </h1><br>
+          <h5 class="w3-center">Tradicion desde 2022</h5>
+          <p class="w3-large">En HealthyBite, nuestro viaje comenzó con una simple pero poderosa idea: transformar
+            la
+            alimentación saludable en una experiencia accesible y deliciosa para todos.
+            Nuestra misión es proporcionar a las personas herramientas y recursos para llevar una dieta equilibrada sin
+            sacrificar el sabor.
+
+            La idea de HealthyBite nació cuando un grupo de apasionados por la nutrición y la cocina se unió para crear
+            una solución que hiciera que comer bien fuera más fácil y divertido. Con el tiempo, nuestra aplicación ha
+            evolucionado para ofrecer una amplia gama de recetas saludables y listas de compras, adaptadas a tus
+            necesidades dietéticas específicas.
+
+            Hoy, HealthyBite se enorgullece de ser un aliado confiable en tu camino hacia una vida más saludable.
+            Creemos que la buena alimentación debe ser accesible y disfrutable, y estamos aquí para ayudarte a descubrir
+            cómo. Únete a nosotros y experimenta el placer de una alimentación balanceada con HealthyBite.</p>
+        </div>
+      </div>
+      <br>
+      <div class="w3-row w3-padding-64" id="envio">
+        <div class="w3-col l6 w3-padding-large">
+          <p class="h1 w3-center">Te lo llevamos</p><br>
+          <p class="w3-large">En HealthyBite, nos especializamos en ofrecer un servicio de pedidos de comidas
+            saludables directamente a tu puerta. Con nuestra plataforma, puedes disfrutar de opciones equilibradas y
+            deliciosas sin tener que preocuparte por la preparación.
+            <br><br>
+            ¿Cómo funciona?
+            <br>
+            Explora el menú: Navega por nuestra amplia selección de comidas saludables y elige tus favoritos. Desde
+            almuerzos nutritivos hasta cenas completas, tenemos algo para cada ocasión.
+
+            Realiza tu pedido: Personaliza tu selección según tus gustos y necesidades dietéticas. Ajusta porciones y
+            elige entre nuestras opciones diseñadas para adaptarse a tu estilo de vida.
+
+            Te lo llevamos a casa: Nuestro equipo se encarga de la entrega rápida y segura de tu pedido. Recibe tus
+            comidas frescas y listas para disfrutar sin moverte de casa. </p>
+        </div>
+        <div class="w3-col l6 w3-padding-large">
+          <img src="../static/images/delivery2.jpg" class="w3-image w3-opacity-min" alt="Menu" style="width:100%">
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+        <div class="w3-content">
+          <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">MENU</h1>
+          {% if session['msj'] %}
+          <div class="alert alert-success" role="alert">
+            <p class="h5">{{session['msj']}}</p>
+          </div>
+          {% set _ = session.pop('msj', None) %}
+          {% endif %}
+          <div class="w3-row w3-center w3-border w3-border-dark-grey">
+            {% for category in categorys %}
+            <a class="menu-link" href="javascript:void(0)"
+              onclick="filter_bycategory(event, '{{ category[0] }}');openMenu(event, '{{ category[0] }}');"
+              id="myLink{{ category[0] }}">
+              <div class="w3-col s4 tablink w3-padding-large w3-hover-red">{{ category[1] }}</div>
+            </a>
+            {% endfor %}
+          </div>
+          <div id="result"></div>
+    </section>
+    <br>
+    <hr>
+    <div class="container w3-padding-64" id="contacto">
+      <h1>Contacto</h1><br>
+      <p>En HealthyBite, valoramos tu opinión y queremos saber cómo podemos mejorar tu experiencia con nosotros. Si tienes preguntas, sugerencias o simplemente quieres decirnos cómo te ha ido con tu pedido, no dudes en contactarnos.
+        Completa nuestro formulario de contacto con tus datos y tu mensaje. Nos comprometemos a responderte lo antes posible.
+      </p>
+      <form>
+        <p><input class="w3-input" type="text" placeholder="Nombre y Apellido" required name="Name"></p>
+        <p><input class="w3-input" type="email" placeholder="email" required name="Email"></p>
+        <p><input class="w3-input" type="text" placeholder="Mensaje" required name="Message"></p>
+        <p><button class="btn-form w3-button w3-section" type="submit">ENVIAR MENSAJE</button></p>
+      </form>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  </script>
+  <script>
+    // Tabbed Menu
+    function openMenu(evt, menuName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("menu");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+      }
+      document.getElementById(menuName).style.display = "block";
+      evt.currentTarget.firstElementChild.className += " w3-red";
+    }
+
+    function filter_bycategory(evt, id_category) {
+      // Make an AJAX request to search for the employee
+      $.ajax({
+        type: 'POST',
+        url: '{{ url_for("filter_bycategory") }}',
+        data: { 'id_category': id_category },
+        success: function (response) {
+          // Update the content dynamically
+          $('#result').html(response);
+        },
+        error: function (error) {
+          console.log("Error:", error);
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
