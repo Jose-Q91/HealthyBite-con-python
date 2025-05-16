@@ -3,7 +3,9 @@ Tienda online de platos saludables para HealthyBite
 ## Un poco de HealthyBite
 HealthyBite es una tienda online de comida saludable orientada a personas que se preocupan por su alimentación y buscan mantener un estilo de vida equilibrado. El objetivo principal de la plataforma es atraer a clientes con conciencia nutricional, ofreciéndoles una experiencia personalizada y cómoda a la hora de elegir sus comidas.
 
-Para lograrlo, HealthyBite cuenta con un panel de usuario donde cada cliente tiene la posibilidad de seleccionar las categorías de platos que más se ajustan a sus intereses y necesidades alimenticias. Esta funcionalidad permite que el sistema genere un menú personalizado, mostrando principalmente los platos que se adaptan a sus gustos.
+Para lograrlo, HealthyBite cuenta con un panel de usuario donde cada cliente puede registrarse e iniciar sesión. Desde allí, tiene la posibilidad de seleccionar las categorías de platos que más se ajustan a sus intereses y necesidades alimenticias. Esta funcionalidad permite que el sistema genere un menú personalizado, mostrando principalmente los platos que se adaptan a sus gustos. Además, el panel personal permite a los usuarios gestionar fácilmente sus pedidos, consultar el historial de compras y mantener un seguimiento ordenado de sus preferencias.
+
+Asimismo, la plataforma cuenta con un panel de administrador desde el cual se pueden gestionar los contenidos del sistema. El administrador tiene la posibilidad de crear, modificar y eliminar platos y usuarios, asegurando un control total sobre la información y el correcto funcionamiento de la tienda online.
 
 
 ### Imagenes
